@@ -66,6 +66,7 @@ export default function App() {
           onReset={reset}
           inputRef={inputRef}
           onFileChange={onFileChange}
+          onSignOut={() => setView("signin")}
         />
         {error && <div style={{ marginTop: 14, color: "#ff6b81", fontSize: 13 }}>⚠ {error}</div>}
       </main>

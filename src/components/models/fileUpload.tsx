@@ -17,7 +17,9 @@ interface FileUploadProps {
   onReset: () => void;
   inputRef: React.RefObject<HTMLInputElement | null>;
   onFileChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onSignOut: () => void;
 }
+
 
 type MediaTab = "Image" | "Video" | "Audio";
 type NavView = "Detect" | "History";
@@ -36,7 +38,7 @@ const TAB_HINT: Record<MediaTab, string> = {
 
 export function FileUpload({
   dragging, file, analyzing, result, error,
-  onDrop, onDragOver, onDragLeave, onClick, onAnalyze, onReset, inputRef, onFileChange,
+  onDrop, onDragOver, onDragLeave, onClick, onAnalyze, onReset, inputRef, onFileChange, onSignOut
 }: FileUploadProps) {
   const [activeTab, setActiveTab] = useState<MediaTab>("Image");
   const [activeView, setActiveView] = useState<NavView>("Detect");
@@ -134,7 +136,9 @@ export function FileUpload({
           <div style={{ marginBottom: 12 }}>
             <div style={{ color: "rgba(255,255,255,0.55)", fontSize: 11 }}>demo@idai.ai</div>
           </div>
-          <div style={{
+          <div 
+          onClick={onSignOut}
+          style={{
             display: "flex", alignItems: "center", gap: 7,
             color: "rgba(255,255,255,0.35)", fontSize: 12, cursor: "pointer",
           }}>
